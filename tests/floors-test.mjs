@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {pack,unpack,withFloors,selectFloor,addFloor,validFloors} from '../dist/floors.js';
+import {segments} from '../dist/geometry.js';
+import {racksValid} from '../dist/racks.js';
+const f={id:'f',name:'Foundation',layer:'foundation',type:'rect',x:0,y:0,w:100,h:50,rotation:15},section={...f,id:'s',layer:'section',w:20,h:20};
+let s=withFloors({version:4,name:'Test',rackTypes:[{id:'t',name:'Type',length:2,width:1,height:4,pallets:12}],shapes:[f,section],walls:segments([f]).map(w=>({...w,enabled:true})),entrances:[{id:'d',type:'shutter',width:3,rotation:0,anchor:null}],racks:[{id:'r',sectionId:'s',typeId:'t',assigned:true}]});
+const first=s.activeFloorId;s=addFloor(s);const second=s.activeFloorId;assert.notEqual(first,second);assert.equal(s.shapes.length,1);assert.equal(s.shapes[0].layer,'foundation');assert.notEqual(s.shapes[0].id,f.id);assert.equal(s.shapes[0].w,100);assert.equal(s.walls.filter(w=>w.enabled).length,4);assert.equal(s.racks.length,0);assert.equal(s.entrances.length,0);assert.equal(s.rackTypes.length,1);
+s.shapes[0].w=33;s.floors[1].label='Mezzanine';s=selectFloor(s,first);assert.equal(s.shapes.length,2);assert.equal(s.racks.length,1);assert.equal(s.entrances.length,1);assert.equal(s.shapes[0].w,100);
+s=addFloor(s);assert.equal(s.shapes[0].w,100);assert.equal(s.floors.length,3);
+s=selectFloor(s,second);assert.equal(s.shapes[0].w,33);assert.equal(s.floors[1].label,'Mezzanine');const restored=unpack(JSON.parse(JSON.stringify(pack(s))));assert.equal(restored.shapes[0].w,33);assert.equal(restored.floors.length,3);assert(validFloors(restored,racksValid));
+assert(!validFloors({...s,rackTypes:[{...s.rackTypes[0],length:1000}]},racksValid));
+console.log('Floor checks passed: migration, first-floor-only cloning, fresh shape IDs, copied wall settings, no sections/racks/entrances, independent edits, labels, full-layout roundtrip, and cross-floor rack validation.');

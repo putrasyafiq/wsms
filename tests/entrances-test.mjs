@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {segments,distance} from '../dist/geometry.js';
+import {entranceGeometry,entrancesValid,nearestPlacement,supported} from '../dist/entrances.js';
+const f={id:'f',type:'rect',layer:'foundation',x:0,y:0,w:100,h:50,rotation:0};const walls=segments([f]).map(w=>({...w,enabled:true}));
+const door={id:'d',type:'swing',width:4,rotation:0,anchor:{owner:'f',edge:0,t:.5}},state={shapes:[f],walls,entrances:[door]};assert(entrancesValid(state));assert.equal(distance(entranceGeometry(door,[f]).a,entranceGeometry(door,[f]).b),4);
+assert(nearestPlacement({...door,anchor:null},{x:99,y:0},[f],walls,5).t<=.98+1e-6);
+assert.equal(nearestPlacement({...door,width:101},{x:50,y:0},[f],walls,5),null);
+assert(!entrancesValid({...state,walls:walls.map(w=>({...w,enabled:false}))}));
+assert(!entrancesValid({...state,entrances:[door,{...door,id:'overlap'}]}));
+assert(entrancesValid({...state,entrances:[door,{...door,id:'next',anchor:{owner:'f',edge:0,t:.8}}]}));
+for(const rotation of [0,90,180,270])assert(entrancesValid({...state,entrances:[{...door,rotation}]}));
+assert(entrancesValid({...state,shapes:[{...f,x:30,rotation:37}]}));
+assert(!entrancesValid({...state,shapes:[{...f,w:3}]}));
+const joining={...f,id:'b',x:48,y:-10,w:4,h:10},splitWalls=segments([f,joining],walls);assert(splitWalls.length>walls.length);assert(supported(door,[f,joining],splitWalls));
+assert.equal(nearestPlacement(door,{x:50,y:0},[f,joining],splitWalls,5)?.owner,'f');
+console.log('Entrance checks passed: snapping, full width, enabled support, overlap rejection, rotations, moved foundations, resize constraints, and placement across collinear joints.');

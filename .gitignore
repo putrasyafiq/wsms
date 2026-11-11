@@ -1,0 +1,4 @@
+work/
+*.tar.gz
+*.xlsx
+.DS_Store
