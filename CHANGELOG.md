@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.23 — 2026-11-12
+
+Medium update (+0.10): Warehouses is now an OpenStreetMap world map, with accessible location pins and numbered clusters. Cluster clicks zoom to reveal nearby locations; identical locations spiderfy at maximum zoom. Pin clicks zoom to a details popup containing role-appropriate workspace and access actions. World View resets the map; returning to Warehouses starts at world view. Missing-coordinate warehouses remain available below the map. Leaflet and MarkerCluster are locally bundled with license notices and OSM tile attribution.
+
 ## v2.13 — 2026-11-12
 
 Minor update (+0.01): warehouse creation and metadata updates require latitude and longitude in decimal degrees. Client and server validate latitude −90…90 and longitude −180…180, including zero. Existing warehouses retain nullable coordinates, are flagged in the list, and require coordinates before layout editing; read-only access is preserved.

@@ -1,4 +1,4 @@
-# WSMS v2.13
+# WSMS v2.23
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -55,3 +55,9 @@ The 0001 migration adds warehouses and warehouse_members without changing existi
 Overview header (v2.12): country and location come from warehouse details; the name dropdown switches among owned/shared warehouses after flushing pending saves. Warehouses comes before Overview in navigation. The floor filter is labelled Floor Management. JSON import/export and Excel download buttons are no longer exposed in Overview; the Excel Data grid remains.
 
 Warehouse coordinates (v2.13): creation and Details updates require latitude (−90 to 90) and longitude (−180 to 180) in decimal degrees. Values are validated server-side and in the form. The append-only 0002 migration adds nullable checked columns without inventing coordinates for existing warehouses. Legacy warehouses are flagged and remain viewable; owners/editors must supply coordinates before layout edits are saved.
+
+## Warehouse world map (v2.23)
+
+Warehouses opens at full world extent using OpenStreetMap tiles. Each accessible warehouse with coordinates is a pin. Nearby warehouses form numbered clusters; clicking zooms into that area, with spiderfying for identical locations at maximum zoom. A pin zooms to street/city scale and opens a popup with warehouse details and permitted actions. World View resets the viewport, and returning to Warehouses starts at world extent.
+
+Warehouses missing coordinates are displayed below the map with a Details action for owners/editors. Tile loading errors show an inline notice while retaining markers. The browser loads tiles directly from https://tile.openstreetmap.org with visible attribution and ordinary browser caching; no prefetching or bulk downloading. The map therefore needs internet access to the OSM tile service. Leaflet 1.9.4 and Leaflet.markercluster 1.5.3 are bundled locally, with licenses in THIRD_PARTY_NOTICES.md.
