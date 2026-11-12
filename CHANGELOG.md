@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.33 — 2026-11-12
+
+Medium update (+0.10): Warehouses map now fills the viewport below the header, without a page frame or borders. Labels, search, add/reset controls and missing-location notices float over the map. Default view is a closer warehouse-centred region rather than whole-world fit, with wrapped OSM tiles avoiding blank margins. Added local country search with suggestions/keyboard selection, country boundary outlines and fitted bounds, including dateline-aware country geometry.
+
 ## v2.23 — 2026-11-12
 
 Medium update (+0.10): Warehouses is now an OpenStreetMap world map, with accessible location pins and numbered clusters. Cluster clicks zoom to reveal nearby locations; identical locations spiderfy at maximum zoom. Pin clicks zoom to a details popup containing role-appropriate workspace and access actions. World View resets the map; returning to Warehouses starts at world view. Missing-coordinate warehouses remain available below the map. Leaflet and MarkerCluster are locally bundled with license notices and OSM tile attribution.

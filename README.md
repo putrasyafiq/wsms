@@ -1,4 +1,4 @@
-# WSMS v2.23
+# WSMS v2.33
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -61,3 +61,7 @@ Warehouse coordinates (v2.13): creation and Details updates require latitude (âˆ
 Warehouses opens at full world extent using OpenStreetMap tiles. Each accessible warehouse with coordinates is a pin. Nearby warehouses form numbered clusters; clicking zooms into that area, with spiderfying for identical locations at maximum zoom. A pin zooms to street/city scale and opens a popup with warehouse details and permitted actions. World View resets the viewport, and returning to Warehouses starts at world extent.
 
 Warehouses missing coordinates are displayed below the map with a Details action for owners/editors. Tile loading errors show an inline notice while retaining markers. The browser loads tiles directly from https://tile.openstreetmap.org with visible attribution and ordinary browser caching; no prefetching or bulk downloading. The map therefore needs internet access to the OSM tile service. Leaflet 1.9.4 and Leaflet.markercluster 1.5.3 are bundled locally, with licenses in THIRD_PARTY_NOTICES.md.
+
+## Full-screen map and country search (v2.33)
+
+The map fills the viewport below the top header; controls float over it. Default View now centres on the selected/first located warehouse at regional zoom, falling back to a closer global region if none exist. OSM tiles wrap horizontally to keep the view filled. Country search uses a local list of 241 countries/territories and generalized World Atlas/Natural Earth geometry, with common aliases. Selection draws a boundary and fits country bounds using responsive padding. Country coordinates are unwrapped across the dateline and warehouse pins follow the displayed world copy. No third-party geocoding requests are sent for search.
