@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.12 — 2026-11-12
+
+Minor update (+0.01): Warehouses precedes Overview in the header. The Overview title is now a permitted-warehouse dropdown, with country above and location below. Switching waits for pending saves and retains the current warehouse if loading fails. Removed Overview JSON import/export, Excel download and role controls; renamed Reporting scope to Floor Management.
+
 ## v2.11 — 2026-11-12
 
 Medium feature update (+0.10): warehouse library with separate layout documents, name/country/location details and per-warehouse owner/editor/viewer roles. Owners share or revoke access by email; editors edit details and layouts; viewers have read-only Overview and export access. Header now shows Overview and Warehouses, with email followed by avatar and no Saved label. Editor launches from the warehouse list. Existing account layouts migrate privately and idempotently on first listing.

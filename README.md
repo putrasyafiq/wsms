@@ -1,4 +1,4 @@
-# WSMS v2.11
+# WSMS v2.12
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -26,7 +26,7 @@ This bundles the portable frontend and API into `dist/server/index.js`. Sites pr
 
 `dist/auth-client.js` exposes authProvider and layoutRepository adapters. `dist/auth.js` handles the landing page, account menu and ordered autosave queue. Replace these adapters when connecting Firebase Auth and Firestore; Firebase credentials and SDKs are not configured in this release.
 
-Current server auth uses salted PBKDF2 password hashes, random opaque HttpOnly/SameSite session cookies (Secure on HTTPS), hashed session tokens in SQLite, auth throttling, same-origin JSON writes and ownership-based access. Layout payloads are structurally checked on the server. Shared-device logins load account data rather than old anonymous browser data. A visible explicit import action can recover a previous browser-local layout. JSON export/import remains under Overview.
+Current server auth uses salted PBKDF2 password hashes, random opaque HttpOnly/SameSite session cookies (Secure on HTTPS), hashed session tokens in SQLite, auth throttling, same-origin JSON writes and ownership-based access. Layout payloads are structurally checked on the server. Shared-device logins load account data rather than old anonymous browser data. A visible explicit import action can recover a previous browser-local layout. Legacy browser layouts can be explicitly imported when opening an empty editable warehouse.
 
 Save failures stay pending for retry; logout flushes pending changes before revoking the session. The UI prompts before closing with unsaved changes. Data is not silently saved as a shared browser cache.
 
@@ -42,12 +42,14 @@ Hosted session transport: the API also accepts the opaque session token in the A
 
 ## Warehouse library and access
 
-After login, Warehouses lists only owned or shared warehouses. Create a warehouse with name, country and location. New warehouse layouts start empty. Owners and editors launch Editor from the list; all three roles can open Overview and export data. The header does not expose an Editor shortcut. Rename warehouse metadata in Details.
+After login, Warehouses lists only owned or shared warehouses. Create a warehouse with name, country and location. New warehouse layouts start empty. Owners and editors launch Editor from the list; all three roles can open Overview. The header does not expose an Editor shortcut. Rename warehouse metadata in Details.
 
 - Owner: the immutable creator, can edit layouts/details and add, change or remove collaborators.
 - Editor: can edit layouts and metadata but cannot manage access.
-- Viewer: can read Overview and export; writes are rejected by the API.
+- Viewer: can read Overview; writes are rejected by the API.
 
 Share by normalized account email. A grant to an unregistered address becomes effective when that address creates an account; this does not send email or bypass the Sites private audience gate. Firebase email verification remains a future integration. Access revocation is checked on subsequent server requests.
 
 The 0001 migration adds warehouses and warehouse_members without changing existing users/sessions/layouts. Old personal layouts are imported into a private owner-only warehouse on the first list request, using a stable ID and INSERT OR IGNORE; repeated requests do not duplicate or overwrite it. Old unscoped layout routes return HTTP 410. All current reads and writes use /api/warehouses/:id/layout. Autosave queues are bound to the selected warehouse and flushed before switching. Failures appear in a retry notice rather than a header Saved label.
+
+Overview header (v2.12): country and location come from warehouse details; the name dropdown switches among owned/shared warehouses after flushing pending saves. Warehouses comes before Overview in navigation. The floor filter is labelled Floor Management. JSON import/export and Excel download buttons are no longer exposed in Overview; the Excel Data grid remains.
