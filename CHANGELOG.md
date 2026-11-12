@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.11 — 2026-11-12
+
+Medium feature update (+0.10): warehouse library with separate layout documents, name/country/location details and per-warehouse owner/editor/viewer roles. Owners share or revoke access by email; editors edit details and layouts; viewers have read-only Overview and export access. Header now shows Overview and Warehouses, with email followed by avatar and no Saved label. Editor launches from the warehouse list. Existing account layouts migrate privately and idempotently on first listing.
+
 ## v2.01 — 2026-11-12
 
 Fix hosted login when the Sites gateway does not carry the app session cookie through to later requests. The client now carries the same opaque, revocable session token in an Authorization header, scoped to the browser tab with sessionStorage; HttpOnly cookies remain supported locally. Passwords and existing accounts are unchanged. Regression checks strip all cookies and verify registration, login, layout loading, page reload and logout.
