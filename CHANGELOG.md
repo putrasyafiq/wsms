@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.01 — 2026-11-12
+
+Fix hosted login when the Sites gateway does not carry the app session cookie through to later requests. The client now carries the same opaque, revocable session token in an Authorization header, scoped to the browser tab with sessionStorage; HttpOnly cookies remain supported locally. Passwords and existing accounts are unchanged. Regression checks strip all cookies and verify registration, login, layout loading, page reload and logout.
+
 ## v2.00 — 2026-11-12
 
 Major change: email/password accounts, login and logout, a warehouse-style landing page, server-side SQLite persistence, account-isolated warehouse documents, and an email account menu. Local Node.js uses a SQLite file; Sites uses SQLite-backed D1. Frontend auth and layout adapters isolate the eventual Firebase Auth / Firestore replacement. Legacy browser layouts require explicit account import. Existing layout editor, floors, capacity reporting and Excel exports remain available.

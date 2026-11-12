@@ -1,4 +1,4 @@
-# WSMS v2.00
+# WSMS v2.01
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -37,3 +37,5 @@ Development checks live under tests/ in the GitHub repository. Run `for test in 
 ## Versions
 
 VERSION tracks product releases independently of JSON schema version. Baseline v1 (1.00); minor changes +0.01, medium +0.10, major +1.00, using decimal arithmetic. Update CHANGELOG.md and release tags together.
+
+Hosted session transport: the API also accepts the opaque session token in the Authorization header because Sites may filter app cookies. The browser keeps it in sessionStorage (tab-scoped), not URLs or persistent localStorage. Server-side token hashing, expiry and logout revocation remain in force. Avoid rendering untrusted HTML or third-party scripts that could access browser storage. Existing cookie sessions remain supported.
