@@ -1,4 +1,4 @@
-# WSMS v2.43
+# WSMS v2.53
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -73,3 +73,11 @@ Editor → Customers manages warehouse-scoped customers (required name, optional
 Rack selectors distinguish Section Default, explicit Unassigned, and explicit customer overrides. Defaults follow later changes to the section; overrides stay unchanged. Choosing a customer marks the rack as assigned for occupancy shading and capacity totals. Existing manual assigned status is retained on legacy racks/sections until customer assignment is configured. Removing a customer clears matching section/rack references on every floor, retaining geometry and racks. Undo restores those changes.
 
 Customer records are saved with each warehouse document and authorized by the warehouse role. Older version-5 documents lacking customer data load with an empty library; the JSON schema version stays 5. Server validation rejects dangling references, duplicate internal customer IDs and blank customer names. Customer details and effective assignments appear in Excel Data, including a Customers sheet.
+
+## Tables and persistent templates (v2.53)
+
+Overview views are Dashboard, Tables and Raw Data. Tables contains By Area (only floor/section space measurements), By Customer (section area by section customer, rack counts/footprints/pallet positions by effective customer after overrides, including Unassigned), and Templates. Floor Management scopes area/customer reports. Section allocations and rack allocations are independent measures, not additive.
+
+The 0003 migration creates user_templates in SQLite/D1. Saving a rack type in Editor also saves/updates a personal rack template via templateRepository in auth-client.js. GET /api/templates safely backfills existing rack types from warehouses owned by that user, using stable warehouse/type source keys and INSERT OR IGNORE. Templates belong to the authenticated user and are not exposed to other accounts. The personal library spans warehouses; current warehouse rack types remain shared through warehouse permissions. Owners/editors can reuse personal templates into an editable warehouse, while viewers cannot change warehouse data. Exact duplicate rack types are not re-added.
+
+Template saves are durable SQLite records, independent of the browser session and surviving process restart. Layouts, customers and assignments continue to save in each warehouse document. Firebase/Firestore is not connected; persistence/auth adapters remain isolated for the future integration.

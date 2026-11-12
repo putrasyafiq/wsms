@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.53 — 2026-11-12
+
+Medium update (+0.10): renamed Overview views to Dashboard, Tables and Raw Data. Tables now has By Area (space-only floor/section breakdowns), By Customer (dedicated areas and effective customer rack groups), and Templates. Added a personal SQLite-backed rack template library shared across a user’s warehouses, automatic personal template saving from Rack Editor, safe backfill of owned warehouse rack types, and reuse into editable warehouses. Existing warehouse data remains persisted in SQLite/D1.
+
 ## v2.43 — 2026-11-12
 
 Medium update (+0.10): Customers editor tab with required name and optional description/customer ID. Customers belong to a warehouse and span its floors. Sections can choose a default customer; racks inherit dynamically or explicitly override with another customer/unassigned. Assignments drive rack status/capacity shading, preserve legacy manual status until customer assignment is configured, and persist through floor changes and autosave. Customer deletion clears matching references without removing sections/racks. Server validates customer references and reports include customer data.
