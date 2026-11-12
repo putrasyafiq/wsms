@@ -1,1 +1,1 @@
-{"name":"wsms","version":"2.3.3","private":true,"type":"module","scripts":{"start":"node server/local.mjs","build":"node scripts/build-worker.mjs"},"engines":{"node":">=22.13"}}
+{"name":"wsms","version":"2.4.3","private":true,"type":"module","scripts":{"start":"node server/local.mjs","build":"node scripts/build-worker.mjs"},"engines":{"node":">=22.13"}}

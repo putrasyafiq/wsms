@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.43 — 2026-11-12
+
+Medium update (+0.10): Customers editor tab with required name and optional description/customer ID. Customers belong to a warehouse and span its floors. Sections can choose a default customer; racks inherit dynamically or explicitly override with another customer/unassigned. Assignments drive rack status/capacity shading, preserve legacy manual status until customer assignment is configured, and persist through floor changes and autosave. Customer deletion clears matching references without removing sections/racks. Server validates customer references and reports include customer data.
+
 ## v2.33 — 2026-11-12
 
 Medium update (+0.10): Warehouses map now fills the viewport below the header, without a page frame or borders. Labels, search, add/reset controls and missing-location notices float over the map. Default view is a closer warehouse-centred region rather than whole-world fit, with wrapped OSM tiles avoiding blank margins. Added local country search with suggestions/keyboard selection, country boundary outlines and fitted bounds, including dateline-aware country geometry.

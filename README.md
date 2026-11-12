@@ -1,4 +1,4 @@
-# WSMS v2.33
+# WSMS v2.43
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -65,3 +65,11 @@ Warehouses missing coordinates are displayed below the map with a Details action
 ## Full-screen map and country search (v2.33)
 
 The map fills the viewport below the top header; controls float over it. Default View now centres on the selected/first located warehouse at regional zoom, falling back to a closer global region if none exist. OSM tiles wrap horizontally to keep the view filled. Country search uses a local list of 241 countries/territories and generalized World Atlas/Natural Earth geometry, with common aliases. Selection draws a boundary and fits country bounds using responsive padding. Country coordinates are unwrapped across the dateline and warehouse pins follow the displayed world copy. No third-party geocoding requests are sent for search.
+
+## Customers (v2.43)
+
+Editor → Customers manages warehouse-scoped customers (required name, optional description and external customer ID). Customers are shared across the warehouse's floors. Assign a section customer in Customers or Section Properties; rack customer selectors are available in Customers and Racks.
+
+Rack selectors distinguish Section Default, explicit Unassigned, and explicit customer overrides. Defaults follow later changes to the section; overrides stay unchanged. Choosing a customer marks the rack as assigned for occupancy shading and capacity totals. Existing manual assigned status is retained on legacy racks/sections until customer assignment is configured. Removing a customer clears matching section/rack references on every floor, retaining geometry and racks. Undo restores those changes.
+
+Customer records are saved with each warehouse document and authorized by the warehouse role. Older version-5 documents lacking customer data load with an empty library; the JSON schema version stays 5. Server validation rejects dangling references, duplicate internal customer IDs and blank customer names. Customer details and effective assignments appear in Excel Data, including a Customers sheet.
