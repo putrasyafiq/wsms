@@ -1,4 +1,4 @@
-# WSMS v2.12
+# WSMS v2.13
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -53,3 +53,5 @@ Share by normalized account email. A grant to an unregistered address becomes ef
 The 0001 migration adds warehouses and warehouse_members without changing existing users/sessions/layouts. Old personal layouts are imported into a private owner-only warehouse on the first list request, using a stable ID and INSERT OR IGNORE; repeated requests do not duplicate or overwrite it. Old unscoped layout routes return HTTP 410. All current reads and writes use /api/warehouses/:id/layout. Autosave queues are bound to the selected warehouse and flushed before switching. Failures appear in a retry notice rather than a header Saved label.
 
 Overview header (v2.12): country and location come from warehouse details; the name dropdown switches among owned/shared warehouses after flushing pending saves. Warehouses comes before Overview in navigation. The floor filter is labelled Floor Management. JSON import/export and Excel download buttons are no longer exposed in Overview; the Excel Data grid remains.
+
+Warehouse coordinates (v2.13): creation and Details updates require latitude (−90 to 90) and longitude (−180 to 180) in decimal degrees. Values are validated server-side and in the form. The append-only 0002 migration adds nullable checked columns without inventing coordinates for existing warehouses. Legacy warehouses are flagged and remain viewable; owners/editors must supply coordinates before layout edits are saved.

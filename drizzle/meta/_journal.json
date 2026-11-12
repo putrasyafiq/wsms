@@ -15,6 +15,13 @@
       "when": 1794450000000,
       "tag": "0001_warehouses",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1794451000000,
+      "tag": "0002_warehouse_coordinates",
+      "breakpoints": true
     }
   ]
 }

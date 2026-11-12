@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.13 — 2026-11-12
+
+Minor update (+0.01): warehouse creation and metadata updates require latitude and longitude in decimal degrees. Client and server validate latitude −90…90 and longitude −180…180, including zero. Existing warehouses retain nullable coordinates, are flagged in the list, and require coordinates before layout editing; read-only access is preserved.
+
 ## v2.12 — 2026-11-12
 
 Minor update (+0.01): Warehouses precedes Overview in the header. The Overview title is now a permitted-warehouse dropdown, with country above and location below. Switching waits for pending saves and retains the current warehouse if loading fails. Removed Overview JSON import/export, Excel download and role controls; renamed Reporting scope to Floor Management.
