@@ -1,4 +1,11 @@
 work/
+node_modules/
+dist/server/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 *.tar.gz
 *.xlsx
+.env*
+.dev.vars*
 .DS_Store
