@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.03 — 2026-11-18
+
+Medium update (+0.10): R now rotates the selected foundation/section or opening 90° in place. Replaced the rack form panel with compact section groups and Add buttons, rack names and Edit/Delete menus. Add/edit dialogs support saved rack types, custom dimensions, tiers, manual pallet positions and customer inheritance/overrides. Matching configurations reuse warehouse types; custom types optionally save to the SQLite personal template library and do not backfill unless chosen. Per-rack edits preserve other racks and validate section capacity.
+
 ## v2.93 — 2026-11-18
 
 Medium update (+0.10): M selects item movement; R selects drag-to-rotate instead of adding rectangles. Right-drag pans the canvas, including over walls and during line drawing; wheel scrolling still zooms. Moved Sections into the bottom dock with drawing palette, shape cards and property popovers. Right panel contains Racks and Customers. Updated shortcut help and direct section-route dock selection.
