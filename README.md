@@ -1,4 +1,4 @@
-# WSMS v3.04
+# WSMS v3.05
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -113,3 +113,5 @@ Dashboard cards show: union of rack-enabled/working sections versus foundation a
 Overview opens the warehouse map; Warehouse contains Dashboard, Tables and Raw Data. Enter Editor opens editing and reveals the Editor header tab only during editing. Existing deep links remain supported. Foundations use the bottom dock with shape previews, name and area; Draw opens building blocks including linework. Select a card for properties and wall controls. Switch to Entrances & exits to add and edit openings and their usage. Floors are available from the dock; Sections share the bottom dock with foundations. Racks and Customers remain in the right panel. M selects movement; R rotates the selected foundation, section or opening 90° in place. Right-drag pans; wheel scrolling zooms.
 
 Racks are grouped by section in the right panel. Add opens a rack dialog with saved type selection, rack name, dimensions, tiers, manual pallet positions and customer inheritance/override. Rack menus provide Edit and Delete. Custom dimensions can optionally be saved to the personal template library; changing a rack creates/reuses its own dimension record without altering other racks.
+
+The editor legend summarizes the active floor: foundation union area in m² and percentages of floor area for sections, assigned/unassigned rack footprints and working areas. Section totals include their racks and working areas; categories overlap.

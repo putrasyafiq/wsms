@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.05 — 2026-11-18
+
+Minor update (+0.01): replaced the static editor legend with live active-floor metrics, foundation union area in m² and floor-space percentages for sections, assigned/unassigned rack ground footprints and working areas. Larger filled/outlined/hatched icons match the canvas, with responsive layout and explanatory category tooltips.
+
 ## v3.04 — 2026-11-18
 
 Minor update (+0.01): matched rack section headers, rack rows, action menus and rack dialog to the existing light site theme. Added readable slate text, pale backgrounds, subtle borders and clear hover/disabled states while preserving the arrangement and behavior.
