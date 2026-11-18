@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.93 — 2026-11-18
+
+Medium update (+0.10): M selects item movement; R selects drag-to-rotate instead of adding rectangles. Right-drag pans the canvas, including over walls and during line drawing; wheel scrolling still zooms. Moved Sections into the bottom dock with drawing palette, shape cards and property popovers. Right panel contains Racks and Customers. Updated shortcut help and direct section-route dock selection.
+
 ## v2.83 — 2026-11-18
 
 Medium update (+0.10): renamed map navigation to Overview and warehouse reporting to Warehouse. Added report-row Enter Editor and an Editor header tab visible only during editing. Moved foundation tools into a bottom dock with shape previews, name/area cards and external tool/property popovers. Dock switches to entrance/exit management, retains wall editing and floor controls, and leaves sections, racks and customers in the right panel. Opening usage persists compatibly with existing layouts.
