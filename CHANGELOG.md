@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.04 — 2026-11-18
+
+Minor update (+0.01): matched rack section headers, rack rows, action menus and rack dialog to the existing light site theme. Added readable slate text, pale backgrounds, subtle borders and clear hover/disabled states while preserving the arrangement and behavior.
+
 ## v3.03 — 2026-11-18
 
 Medium update (+0.10): R now rotates the selected foundation/section or opening 90° in place. Replaced the rack form panel with compact section groups and Add buttons, rack names and Edit/Delete menus. Add/edit dialogs support saved rack types, custom dimensions, tiers, manual pallet positions and customer inheritance/overrides. Matching configurations reuse warehouse types; custom types optionally save to the SQLite personal template library and do not backfill unless chosen. Per-rack edits preserve other racks and validate section capacity.

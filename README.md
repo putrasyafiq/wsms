@@ -1,4 +1,4 @@
-# WSMS v3.03
+# WSMS v3.04
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
