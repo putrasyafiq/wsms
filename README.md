@@ -1,4 +1,4 @@
-# WSMS v2.73
+# WSMS v2.83
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -107,3 +107,7 @@ Sections have distinct Enable Rack Placement and Mark as Working Area controls. 
 Rack types and personal templates support 1–100 tiers (old records default to one). Usable rack area = length × width × tiers. Physical ground footprint remains length × width, and pallet positions remain the manually entered total per rack regardless of tiers. Ground-area checks and map divisions continue to use physical footprint.
 
 Dashboard cards show: union of rack-enabled/working sections versus foundation area; assigned versus installed usable rack area across tiers; assigned versus installed manual pallet positions with percentage; assigned section area divided by distinct customers with assigned sections in the selected floors. Customer section area uses a union per customer per floor; the overlap warning still applies between different customers. All data persists in existing SQLite/D1 warehouse documents and personal templates.
+
+## Workspace navigation and foundation dock
+
+Overview opens the warehouse map; Warehouse contains Dashboard, Tables and Raw Data. Enter Editor opens editing and reveals the Editor header tab only during editing. Existing deep links remain supported. Foundations use the bottom dock with shape previews, name and area; Draw opens building blocks including linework. Select a card for properties and wall controls. Switch to Entrances & exits to add and edit openings and their usage. Floors are available from the dock; Sections, Racks and Customers remain in the right panel.

@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.83 — 2026-11-18
+
+Medium update (+0.10): renamed map navigation to Overview and warehouse reporting to Warehouse. Added report-row Enter Editor and an Editor header tab visible only during editing. Moved foundation tools into a bottom dock with shape previews, name/area cards and external tool/property popovers. Dock switches to entrance/exit management, retains wall editing and floor controls, and leaves sections, racks and customers in the right panel. Opening usage persists compatibly with existing layouts.
+
 ## v2.73 — 2026-11-18
 
 Medium update (+0.10): separate rack-placement and working-area controls with legacy reserved-area compatibility. Added rack tiers, defaulting to one; usable rack area is footprint × tiers while ground footprint and manually entered pallet positions remain unchanged. Dashboard cards now show allocated/total floor, assigned/total tiered rack area, assigned/total manual pallet positions with utilization, and average assigned section area per relevant customer. Saved rack templates retain tiers.
