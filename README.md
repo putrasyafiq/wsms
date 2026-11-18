@@ -1,4 +1,4 @@
-# WSMS v2.53
+# WSMS v2.63
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -81,3 +81,21 @@ Overview views are Dashboard, Tables and Raw Data. Tables contains By Area (only
 The 0003 migration creates user_templates in SQLite/D1. Saving a rack type in Editor also saves/updates a personal rack template via templateRepository in auth-client.js. GET /api/templates safely backfills existing rack types from warehouses owned by that user, using stable warehouse/type source keys and INSERT OR IGNORE. Templates belong to the authenticated user and are not exposed to other accounts. The personal library spans warehouses; current warehouse rack types remain shared through warehouse permissions. Owners/editors can reuse personal templates into an editable warehouse, while viewers cannot change warehouse data. Exact duplicate rack types are not re-added.
 
 Template saves are durable SQLite records, independent of the browser session and surviving process restart. Layouts, customers and assignments continue to save in each warehouse document. Firebase/Firestore is not connected; persistence/auth adapters remain isolated for the future integration.
+
+## Foundation lines (v2.63)
+
+In Foundation choose Draw Foundation Lines (L). Click points or drag segments; Shift constrains to horizontal/vertical. Lines snap to the grid and nearby line/foundation corners or edges. Closed bounded faces are filled as custom polygon foundations automatically, including intersections and outlines sharing an existing foundation edge. Open segments are stored per floor and remain unfilled. Escape/right-click ends the current chain, and open lines can be selected/deleted or cleared. Undo/redo covers both linework and created foundations.
+
+Filled polygons retain normal move, bounding-dimension resize, rotation, wall toggles, entrances, floor copying and section containment. Converted boundary linework is consumed so moving a completed foundation cannot recreate an old footprint. Drafts support up to 300 lines/floor and polygons up to 128 corners. New floors copy completed foundations but not unfinished lines. Existing JSON schema version 5 stays compatible through optional normalized polygon points and foundationLines fields.
+
+## Page routes
+
+- /login (with a validated same-origin next path for direct links)
+- /warehouses
+- /warehouses/:id/editor (Foundation)
+- /warehouses/:id/editor/sections, /racks, /customers
+- /warehouses/:id/overview/dashboard
+- /warehouses/:id/overview/tables/area, /customer, /templates
+- /warehouses/:id/overview/raw-data/:sheet-slug
+
+Floor selections use a floor query parameter. Native browser back/forward restores views, and the local server and hosted Worker serve the application shell at direct page routes. Assets use absolute URLs so deep-link refreshes work. API authorization still controls each warehouse request; viewers opening an Editor link are redirected to Overview.

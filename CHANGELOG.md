@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.63 — 2026-11-18
+
+Medium update (+0.10): foundation line tool with click/drag drawing, grid/corner/edge snapping, constrained direction, automatic bounded-face filling, draft-line persistence and deletion, and ordinary editable wall segments on generated polygons. Replaced the editor breadcrumb with a larger legend. Added warehouse-scoped Editor/Overview/table/raw-data routes, login return paths, direct-load SPA support and browser navigation. Corrected saved version-5 layout loading so existing floors/documents restore before route application.
+
 ## v2.53 — 2026-11-12
 
 Medium update (+0.10): renamed Overview views to Dashboard, Tables and Raw Data. Tables now has By Area (space-only floor/section breakdowns), By Customer (dedicated areas and effective customer rack groups), and Templates. Added a personal SQLite-backed rack template library shared across a user’s warehouses, automatic personal template saving from Rack Editor, safe backfill of owned warehouse rack types, and reuse into editable warehouses. Existing warehouse data remains persisted in SQLite/D1.
