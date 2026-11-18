@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.73 — 2026-11-18
+
+Medium update (+0.10): separate rack-placement and working-area controls with legacy reserved-area compatibility. Added rack tiers, defaulting to one; usable rack area is footprint × tiers while ground footprint and manually entered pallet positions remain unchanged. Dashboard cards now show allocated/total floor, assigned/total tiered rack area, assigned/total manual pallet positions with utilization, and average assigned section area per relevant customer. Saved rack templates retain tiers.
+
 ## v2.63 — 2026-11-18
 
 Medium update (+0.10): foundation line tool with click/drag drawing, grid/corner/edge snapping, constrained direction, automatic bounded-face filling, draft-line persistence and deletion, and ordinary editable wall segments on generated polygons. Replaced the editor breadcrumb with a larger legend. Added warehouse-scoped Editor/Overview/table/raw-data routes, login return paths, direct-load SPA support and browser navigation. Corrected saved version-5 layout loading so existing floors/documents restore before route application.

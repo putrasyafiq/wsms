@@ -1,4 +1,4 @@
-# WSMS v2.63
+# WSMS v2.73
 
 Warehouse Space Management System with account-owned layouts, a visual warehouse login, floor and section editors, racks, reserved non-storage areas, capacity charts and Excel export.
 
@@ -99,3 +99,11 @@ Filled polygons retain normal move, bounding-dimension resize, rotation, wall to
 - /warehouses/:id/overview/raw-data/:sheet-slug
 
 Floor selections use a floor query parameter. Native browser back/forward restores views, and the local server and hosted Worker serve the application shell at direct page routes. Assets use absolute URLs so deep-link refreshes work. API authorization still controls each warehouse request; viewers opening an Editor link are redirected to Overview.
+
+## Working areas and capacity (v2.73)
+
+Sections have distinct Enable Rack Placement and Mark as Working Area controls. Working areas represent walkways/loading/unloading and prohibit racks; enabling rack placement clears the working-area flag. Remove existing racks before marking a section as working area. Disabling rack placement alone does not reserve new sections. Older disabled sections retain their prior reserved meaning until explicitly changed.
+
+Rack types and personal templates support 1–100 tiers (old records default to one). Usable rack area = length × width × tiers. Physical ground footprint remains length × width, and pallet positions remain the manually entered total per rack regardless of tiers. Ground-area checks and map divisions continue to use physical footprint.
+
+Dashboard cards show: union of rack-enabled/working sections versus foundation area; assigned versus installed usable rack area across tiers; assigned versus installed manual pallet positions with percentage; assigned section area divided by distinct customers with assigned sections in the selected floors. Customer section area uses a union per customer per floor; the overlap warning still applies between different customers. All data persists in existing SQLite/D1 warehouse documents and personal templates.
